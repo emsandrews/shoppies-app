@@ -64,7 +64,7 @@ const MoviePoster = styled.img`
 `;
 
 const NominateButton = styled.button`
-  background-color: #377e62;
+  background-color: ${(props) => (props.isNominated ? "#DC5252" : "#377e62")};
   width: 100%;
   height: 50px;
   border-bottom-left-radius: 10px;
@@ -79,23 +79,38 @@ const NominateButton = styled.button`
 
 const DEFAULT_PLACEHOLDER_IMAGE = "/images/PlaceHolderImage.png";
 
-const Movie = ({ movie }) => {
-  const poster =
-    movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
-  return (
-    <Wrapper>
-      <MovieWrapper>
-        <MovieDiv>
-          <MovieInfo>
-            <MovieTitle>{movie.Title}</MovieTitle>
-            <MovieYear>{movie.Year}</MovieYear>
-            <NominateButton>Nominate</NominateButton>
-          </MovieInfo>
-          <MoviePoster alt={`The movie titled: ${movie.Title}`} src={poster} />
-        </MovieDiv>
-      </MovieWrapper>
-    </Wrapper>
-  );
-};
+class Movie extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const movie = this.props.movie;
+    const poster =
+      movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
+    return (
+      <Wrapper>
+        <MovieWrapper>
+          <MovieDiv>
+            <MovieInfo>
+              <MovieTitle>{movie.Title}</MovieTitle>
+              <MovieYear>{movie.Year}</MovieYear>
+              <NominateButton
+                isNominated={this.props.isNominated}
+                onClick={() => this.props.onClick(movie)}
+              >
+                {this.props.isNominated ? "Remove" : "Nominate"}
+              </NominateButton>
+            </MovieInfo>
+            <MoviePoster
+              alt={`The movie titled: ${movie.Title}`}
+              src={poster}
+            />
+          </MovieDiv>
+        </MovieWrapper>
+      </Wrapper>
+    );
+  }
+}
 
 export default Movie;

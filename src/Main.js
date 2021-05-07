@@ -8,11 +8,11 @@ class Main extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route strict path="/">
-            <LandingPage />
-          </Route>
           <Route strict path="/Shoppies">
             <App />
+          </Route>
+          <Route strict path="/">
+            <LandingPage />
           </Route>
         </Switch>
       </BrowserRouter>

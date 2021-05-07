@@ -1,11 +1,25 @@
 import styled from "styled-components";
 import React, { Component } from "react";
-import { Route, Switch, browserHistory } from "react-router-dom";
+import { withRouter, Route, Switch, browserHistory } from "react-router-dom";
+
+const Parent = styled.image`
+  background-image: "/images/Ellipse-5.png";
+`;
 
 const Wrapper = styled.div`
   flex-direction: row;
   display: flex;
   height: 100vh;
+`;
+
+const Wave = styled.div`
+  position: absolute;
+  width: 1166.26px;
+  height: 1032.93px;
+  left: 108.52px;
+  top: -189.07px;
+
+  background: rgba(227, 248, 247, 0.42);
 `;
 
 const LeftPane = styled.div`
@@ -19,7 +33,7 @@ const LeftPane = styled.div`
 const RightPane = styled.div`
   width: 50%;
   height: 100%;
-  background-color: rgba(227, 248, 247, 0.42);
+  //background-color: rgba(227, 248, 247, 0.42);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,28 +97,35 @@ const EnterButton = styled.button`
 `;
 
 class LandingPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   handleClick = () => {
     this.props.history.push("/Shoppies");
   };
 
   render() {
     return (
-      <Wrapper>
-        <LeftPane>
-          <FormWrapper>
-            <Title>The Shoppies.</Title>
-            <SubTitle>Brought to you by Shopify</SubTitle>
-            <EnterButton onClick={this.handleClick} type="button">
-              Enter Site
-            </EnterButton>
-          </FormWrapper>
-        </LeftPane>
-        <RightPane>
-          <ShoppiesLogo src="/images/shoppies-logo.png" />
-        </RightPane>
-      </Wrapper>
+      <Parent>
+        <Wrapper>
+          <LeftPane>
+            <FormWrapper>
+              <Title>The Shoppies.</Title>
+              <SubTitle>Brought to you by Shopify</SubTitle>
+              <EnterButton onClick={this.handleClick} type="button">
+                Enter Site
+              </EnterButton>
+            </FormWrapper>
+          </LeftPane>
+          <RightPane>
+            <ShoppiesLogo src="/images/shoppies-logo.png" />
+          </RightPane>
+        </Wrapper>
+      </Parent>
     );
   }
 }
 
-export default LandingPage;
+export default withRouter(LandingPage);

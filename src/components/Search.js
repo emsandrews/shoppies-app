@@ -66,9 +66,12 @@ class Search extends React.Component {
   }
 
   handleSearchInputChanges(e) {
-    this.setState({
-      searchValue: e.target.value,
-    });
+    this.setState(
+      {
+        searchValue: e.target.value,
+      },
+      this.callSearchFunction
+    );
   }
 
   resetInputField() {
@@ -78,9 +81,7 @@ class Search extends React.Component {
   }
 
   callSearchFunction(e) {
-    e.preventDefault();
     this.props.search(this.state.searchValue);
-    this.resetInputField();
   }
 
   render() {
@@ -89,14 +90,9 @@ class Search extends React.Component {
         <SearchForm>
           <SearchField
             value={this.state.searchValue}
-            onChange={this.handleSearchInputChanges.bind(this)}
+            onChange={this.handleSearchInputChanges}
             type="text"
             maxlength="100"
-          />
-          <SearchButton
-            onClick={this.callSearchFunction}
-            type="submit"
-            value="Find Movie"
           />
         </SearchForm>
       </SearchDiv>
