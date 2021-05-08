@@ -16,12 +16,13 @@ const SearchForm = styled.form`
   justify-content: center;
   margin-top: 10px;
   padding: 20px;
+  flex-grow: 1;
 `;
 
 const SearchField = styled.input`
   box-sizing: border-box;
-  width: 278px;
-  height: 31px;
+  flex-grow: 1;
+  height: 50px;
   left: 50px;
   top: 407px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -29,7 +30,7 @@ const SearchField = styled.input`
   outline: none;
   border: none;
   padding: 10px;
-  margin-right: 20px;
+  font-size: 22px;
 `;
 
 const SearchButton = styled.input`
@@ -93,6 +94,7 @@ class Search extends React.Component {
             onChange={this.handleSearchInputChanges}
             type="text"
             maxlength="100"
+            onSubmit={this.callSearchFunction}
           />
         </SearchForm>
       </SearchDiv>

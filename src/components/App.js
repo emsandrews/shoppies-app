@@ -4,48 +4,139 @@ import Movie from "./Movie.js";
 import Search from "./Search.js";
 import Loader from "./Loader.js";
 import styled from "styled-components";
+import Emoji from "./Emoji.js";
 
 const MOVIE_API_URL = "https://www.omdbapi.com/";
 const MOVIE_API_KEY = "bd902656&";
 
-const ErrorMessage = styled.div`
-  font-weight: bold;
-  font-size: 15px;
-  color: #636669;
-  display: flex;
-`;
-
 const AppWrapper = styled.div`
   text-align: center;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const RightPanel = styled.div`
+  min-width: 480px;
+  background: linear-gradient(273.33deg, #cfece1 16.8%, #7eb7a0 69.75%);
   display: flex;
   flex-direction: column;
 `;
 
-const MoviesWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
 const NomWrapper = styled.div`
-  height: 300px;
-  width: 100%;
+  align-self: flex-start;
+  flex-flow: row wrap;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
 `;
 
-const ErrorDiv = styled.div`
+const NomTitleDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  padding-left: 25px;
+  padding-top: 25px;
+`;
+
+const NomTitle = styled.div`
+  color: #636669;
+  font-size: 16px;
+  padding-right: 10px;
+`;
+
+const NomBannerDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   height: 20px;
   padding-left: 25px;
+  padding-top: 25px;
+`;
+
+const NomBannerTitle = styled.div`
+  color: #636669;
+  font-size: 16px;
+  padding-right: 10px;
+`;
+
+const LeftPanel = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const MoviesWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const SearchTitleDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 20px;
+  padding-left: 25px;
+`;
+
+const SearchTitle = styled.div`
+  color: #636669;
+  font-size: 16px;
+  padding-right: 10px;
+`;
+
+const MovieTitleDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 20px;
+  padding-left: 25px;
+  padding-top: 25px;
+`;
+
+const MovieTitle = styled.div`
+  color: #636669;
+  font-size: 16px;
+  padding-right: 10px;
+`;
+
+const ErrorMessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 1000px;
+  min-height: 1000px;
+  height: 100%;
+  padding-left: 25px;
+  margin-top: 50px;
+`;
+
+const ErrorMessageDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  padding-left: 25px;
+`;
+
+const Message = styled.div`
+  color: #636669;
+  padding-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
 `;
 
 class App extends React.Component {
@@ -114,34 +205,56 @@ class App extends React.Component {
   render() {
     return (
       <AppWrapper>
-        <Header text="The Shoppies 2021" />
-        <NomWrapper>
-          {this.state.nominations.map((movie, index) => (
-            <Movie
-              key={`nom-${index}-${movie.Title}`}
-              movie={movie}
-              onClick={this.handleRemove}
-              buttonTitle={"Remove"}
-              isNominated={true}
-            />
-          ))}
-        </NomWrapper>
-        <Search search={this.search} />
-        <ErrorDiv>
-          {this.state.errorMessage !== null ? (
-            <ErrorMessage>{`Sorry, ${this.state.errorMessage}`}</ErrorMessage>
-          ) : null}
-        </ErrorDiv>
-        <MoviesWrapper>
-          {this.state.movies.map((movie, index) => (
-            <Movie
-              key={`${index}-${movie.Title}`}
-              movie={movie}
-              onClick={this.handleAdd}
-              isNominated={false}
-            />
-          ))}
-        </MoviesWrapper>
+        <ContentWrapper>
+          <LeftPanel>
+            <Header text="The Shoppies 2021" />
+            <SearchTitleDiv>
+              <SearchTitle>Find a Movie</SearchTitle>
+              <Emoji symbol="🔎" label="search" />
+            </SearchTitleDiv>
+            <Search search={this.search} />
+            <MovieTitleDiv>
+              <MovieTitle>Movies</MovieTitle>
+              <Emoji symbol="🎥" label="camera" />
+            </MovieTitleDiv>
+            <MoviesWrapper>
+              {this.state.errorMessage !== null ? (
+                <ErrorMessageContainer>
+                  <ErrorMessageDiv>
+                    <Message>{`Sorry, ${this.state.errorMessage} `}</Message>
+                    <Emoji symbol="🍿" label="popcorn" />
+                  </ErrorMessageDiv>
+                </ErrorMessageContainer>
+              ) : (
+                this.state.movies.map((movie, index) => (
+                  <Movie
+                    key={`${index}-${movie.Title}`}
+                    movie={movie}
+                    onClick={this.handleAdd}
+                    isNominated={false}
+                  />
+                ))
+              )}
+            </MoviesWrapper>
+          </LeftPanel>
+          <RightPanel>
+            <NomTitleDiv>
+              <NomTitle>Nominations</NomTitle>
+              <Emoji symbol="🏆" label="trophy"></Emoji>
+            </NomTitleDiv>
+            <NomWrapper>
+              {this.state.nominations.map((movie, index) => (
+                <Movie
+                  key={`nom-${index}-${movie.Title}`}
+                  movie={movie}
+                  onClick={this.handleRemove}
+                  buttonTitle={"Remove"}
+                  isNominated={true}
+                />
+              ))}
+            </NomWrapper>
+          </RightPanel>
+        </ContentWrapper>
       </AppWrapper>
     );
   }

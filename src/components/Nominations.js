@@ -39,7 +39,7 @@ class Nominations extends React.Component {
   render() {
     return (
       <NomWrapper>
-        <Movie>{this.getNominations(this.movies)}</Movie>
+        <Movie></Movie>
       </NomWrapper>
     );
   }
