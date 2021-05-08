@@ -186,7 +186,7 @@ class App extends React.Component {
     const nominations = this.state.nominations;
     if (
       nominations.length < 5 &&
-      nominations.find((nom) => nom.Title === movie.Title) === null
+      nominations.find((nom) => nom.Title === movie.Title) == null
     ) {
       nominations.push(movie);
     }
