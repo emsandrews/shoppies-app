@@ -33,28 +33,6 @@ const SearchField = styled.input`
   font-size: 22px;
 `;
 
-const SearchButton = styled.input`
-  padding: 5px;
-  background-color: #377e62;
-  color: white;
-  width: 90px;
-  height: 31px;
-  margin-left: 5px;
-  cursor: pointer;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  font-size: 12px;
-  font-weight: bold;
-
-  &:hover {
-    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
-  }
-  &:active {
-    background: #7eb7a0;
-  }
-`;
-
 class Search extends React.Component {
   constructor(props) {
     super(props);

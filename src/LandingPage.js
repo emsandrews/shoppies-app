@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import React, { Component } from "react";
-import { withRouter, Route, Switch, browserHistory } from "react-router-dom";
+import React from "react";
+import { withRouter } from "react-router-dom";
 
-const Parent = styled.image`
+const Parent = styled.div`
   background-image: "/images/Ellipse-5.png";
 `;
 
@@ -10,16 +10,6 @@ const Wrapper = styled.div`
   flex-direction: row;
   display: flex;
   height: 100vh;
-`;
-
-const Wave = styled.div`
-  position: absolute;
-  width: 1166.26px;
-  height: 1032.93px;
-  left: 108.52px;
-  top: -189.07px;
-
-  background: rgba(227, 248, 247, 0.42);
 `;
 
 const LeftPane = styled.div`

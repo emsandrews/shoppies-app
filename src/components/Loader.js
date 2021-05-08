@@ -46,10 +46,6 @@ const DoubleBounce2 = styled.div`
 `;
 
 class Loader extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Spinner>

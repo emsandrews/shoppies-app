@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "./Header.js";
 import Movie from "./Movie.js";
 import Search from "./Search.js";
-import Loader from "./Loader.js";
 import styled from "styled-components";
 import Emoji from "./Emoji.js";
 
@@ -50,21 +49,21 @@ const NomTitle = styled.div`
   padding-right: 10px;
 `;
 
-const NomBannerDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  height: 20px;
-  padding-left: 25px;
-  padding-top: 25px;
-`;
+// const NomBannerDiv = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   align-items: center;
+//   height: 20px;
+//   padding-left: 25px;
+//   padding-top: 25px;
+// `;
 
-const NomBannerTitle = styled.div`
-  color: #636669;
-  font-size: 16px;
-  padding-right: 10px;
-`;
+// const NomBannerTitle = styled.div`
+//   color: #636669;
+//   font-size: 16px;
+//   padding-right: 10px;
+// `;
 
 const LeftPanel = styled.div`
   display: flex;
@@ -187,7 +186,7 @@ class App extends React.Component {
     const nominations = this.state.nominations;
     if (
       nominations.length < 5 &&
-      nominations.find((nom) => nom.Title == movie.Title) == null
+      nominations.find((nom) => nom.Title === movie.Title) === null
     ) {
       nominations.push(movie);
     }
@@ -197,7 +196,7 @@ class App extends React.Component {
   handleRemove(movie) {
     const nominations = this.state.nominations;
     var filteredNominations = nominations.filter(function (nom) {
-      return nom.Title != movie.Title;
+      return nom.Title !== movie.Title;
     });
     this.setState({ nominations: filteredNominations });
   }

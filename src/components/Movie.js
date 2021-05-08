@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Nominations from "./Nominations";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
@@ -80,10 +79,6 @@ const NominateButton = styled.button`
 const DEFAULT_PLACEHOLDER_IMAGE = "/images/PlaceHolderImage.png";
 
 class Movie extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const movie = this.props.movie;
     const poster =
