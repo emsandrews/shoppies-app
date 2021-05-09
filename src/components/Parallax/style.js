@@ -1,9 +1,9 @@
 // Original repo for this found here: https://github.com/DanielSinclair/react-atv-parallax
 // Minor modifications made, including removing the layering effect and adding onClick functionality
 
-export default {
+const style = {
   root: {
-    borderRadius: 5,
+    borderRadius: 10,
     transformStyle: "preserve-3d",
     WebkitTapHighlightColor: "rgba(#000, 0)",
   },
@@ -12,7 +12,7 @@ export default {
     position: "relative",
     width: "100%",
     height: "100%",
-    borderRadius: 5,
+    borderRadius: 10,
     transition: "all 0.2s ease-out",
   },
 
@@ -25,7 +25,7 @@ export default {
     position: "relative",
     width: "100%",
     height: "100%",
-    borderRadius: 5,
+    borderRadius: 10,
     overflow: "hidden",
     transformStyle: "preserve-3d",
   },
@@ -55,8 +55,10 @@ export default {
     left: 0,
     right: 0,
     bottom: 0,
-    borderRadius: 5,
+    borderRadius: 10,
     background:
       "linear-gradient(135deg, rgba(255, 255, 255, .25) 0%, rgba(255, 255, 255, 0) 60%)",
   },
 };
+
+export default style;

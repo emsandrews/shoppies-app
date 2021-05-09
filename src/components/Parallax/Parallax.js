@@ -7,7 +7,7 @@ import React from "react";
 
 import style from "./style.js";
 
-export default createClass({
+const Parallax = createClass({
   propTypes: {
     isStatic: PropTypes.bool,
     style: PropTypes.object,
@@ -197,3 +197,5 @@ export default createClass({
     );
   },
 });
+
+export default Parallax;
