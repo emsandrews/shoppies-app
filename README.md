@@ -1,4 +1,7 @@
 
+## Shopify Frontend Intern Coding Challenge
+### By Emily Andrews
+___
 
 ![sign-up](/ShoppiesBanner.png)
 
