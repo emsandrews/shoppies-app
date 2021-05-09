@@ -74,6 +74,10 @@ const NominateButton = styled.button`
   align-items: center;
   outline: none;
   border: none;
+
+  &:disabled {
+    background: #adccbf;
+  }
 `;
 
 const DEFAULT_PLACEHOLDER_IMAGE = "/images/PlaceHolderImage.png";
@@ -93,6 +97,7 @@ class Movie extends React.Component {
               <NominateButton
                 isNominated={this.props.isNominated}
                 onClick={() => this.props.onClick(movie)}
+                disabled={this.props.buttonDisabled}
               >
                 {this.props.isNominated ? "Remove" : "Nominate"}
               </NominateButton>

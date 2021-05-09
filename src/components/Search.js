@@ -37,7 +37,6 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.handleSearchInputChanges = this.handleSearchInputChanges.bind(this);
-    this.resetInputField = this.resetInputField.bind(this);
     this.callSearchFunction = this.callSearchFunction.bind(this);
     this.state = {
       searchValue: "",
@@ -53,10 +52,9 @@ class Search extends React.Component {
     );
   }
 
-  resetInputField() {
-    this.setState({
-      searchValue: "",
-    });
+  submitForm(e) {
+    e.preventDefault();
+    return false;
   }
 
   callSearchFunction(e) {
@@ -66,13 +64,12 @@ class Search extends React.Component {
   render() {
     return (
       <SearchDiv>
-        <SearchForm>
+        <SearchForm onSubmit={this.submitForm}>
           <SearchField
             value={this.state.searchValue}
             onChange={this.handleSearchInputChanges}
             type="text"
             maxlength="100"
-            onSubmit={this.callSearchFunction}
           />
         </SearchForm>
       </SearchDiv>

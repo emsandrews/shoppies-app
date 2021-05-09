@@ -13,15 +13,18 @@ const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 20px;
+  min-height: 100vh;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
 `;
 
 const RightPanel = styled.div`
   min-width: 480px;
+  max-width: 480px;
   background: linear-gradient(273.33deg, #cfece1 16.8%, #7eb7a0 69.75%);
   display: flex;
   flex-direction: column;
@@ -35,18 +38,27 @@ const NomWrapper = styled.div`
 
 const NomTitleDiv = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 50px;
-  padding-left: 25px;
-  padding-top: 25px;
+  padding: 25px;
 `;
 
 const NomTitle = styled.div`
   color: #636669;
   font-size: 16px;
-  padding-right: 10px;
+  padding: 15px;
+`;
+
+const NomBanner = styled.div`
+  color: #636669;
+  font-size: 16px;
+  padding: 15px;
+  background-color: white;
+  height: 30px;
+  width: 400px;
+  border-radius: 10px;
 `;
 
 // const NomBannerDiv = styled.div`
@@ -68,11 +80,11 @@ const NomTitle = styled.div`
 const LeftPanel = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 `;
 
 const MoviesWrapper = styled.div`
   display: flex;
-  height: 100%;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
@@ -114,9 +126,6 @@ const ErrorMessageContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  min-width: 1000px;
-  min-height: 1000px;
-  height: 100%;
   padding-left: 25px;
   margin-top: 50px;
 `;
@@ -144,6 +153,10 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.movieIsNominated = this.movieIsNominated.bind(this);
+    this.handleSuccessfulOMDBResponse = this.handleSuccessfulOMDBResponse.bind(
+      this
+    );
     this.state = {
       loading: true,
       movies: [],
@@ -168,10 +181,7 @@ class App extends React.Component {
         .then((response) => response.json())
         .then((jsonResponse) => {
           if (jsonResponse.Response === "True") {
-            this.setState({
-              movies: jsonResponse.Search,
-              loading: false,
-            });
+            this.handleSuccessfulOMDBResponse(jsonResponse);
           } else {
             this.setState({
               errorMessage: jsonResponse.Error,
@@ -182,23 +192,43 @@ class App extends React.Component {
     }
   }
 
+  handleSuccessfulOMDBResponse(jsonResponse) {
+    var filteredMovies = jsonResponse.Search.filter(function (mov) {
+      return this.find((nom) => nom.Title === mov.Title) == null;
+    }, this.state.nominations);
+    this.setState({
+      movies: filteredMovies,
+      loading: false,
+    });
+  }
+
   handleAdd(movie) {
     const nominations = this.state.nominations;
-    if (
-      nominations.length < 5 &&
-      nominations.find((nom) => nom.Title === movie.Title) == null
-    ) {
+    if (nominations.length < 5 && !this.movieIsNominated(movie)) {
       nominations.push(movie);
+
+      const movies = this.state.movies;
+      var filteredMovies = movies.filter(function (nom) {
+        return nom.Title !== movie.Title;
+      });
+      this.setState({ movies: filteredMovies });
+      this.setState({ nominations });
     }
-    this.setState({ nominations });
   }
 
   handleRemove(movie) {
     const nominations = this.state.nominations;
+    //var movies = this.state.movies.push(movie);
     var filteredNominations = nominations.filter(function (nom) {
       return nom.Title !== movie.Title;
     });
     this.setState({ nominations: filteredNominations });
+    //this.setState({ movies: movies });
+  }
+
+  movieIsNominated(movie) {
+    const nominations = this.state.nominations;
+    return nominations.find((nom) => nom.Title === movie.Title) != null;
   }
 
   render() {
@@ -217,29 +247,28 @@ class App extends React.Component {
               <Emoji symbol="🎥" label="camera" />
             </MovieTitleDiv>
             <MoviesWrapper>
-              {this.state.errorMessage !== null ? (
-                <ErrorMessageContainer>
-                  <ErrorMessageDiv>
-                    <Message>{`Sorry, ${this.state.errorMessage} `}</Message>
-                    <Emoji symbol="🍿" label="popcorn" />
-                  </ErrorMessageDiv>
-                </ErrorMessageContainer>
-              ) : (
-                this.state.movies.map((movie, index) => (
-                  <Movie
-                    key={`${index}-${movie.Title}`}
-                    movie={movie}
-                    onClick={this.handleAdd}
-                    isNominated={false}
-                  />
-                ))
-              )}
+              {this.state.movies.map((movie, index) => (
+                <Movie
+                  key={`${index}-${movie.Title}`}
+                  movie={movie}
+                  onClick={this.handleAdd}
+                  isNominated={false}
+                />
+              ))}
             </MoviesWrapper>
           </LeftPanel>
           <RightPanel>
             <NomTitleDiv>
-              <NomTitle>Nominations</NomTitle>
-              <Emoji symbol="🏆" label="trophy"></Emoji>
+              <NomTitle>
+                Nominations
+                <Emoji symbol="🏆" label="trophy"></Emoji>
+              </NomTitle>
+              {this.state.nominations.length === 5 ? (
+                <NomBanner>
+                  You Have 5 Nominations!
+                  <Emoji symbol="🎉" label="party"></Emoji>
+                </NomBanner>
+              ) : null}
             </NomTitleDiv>
             <NomWrapper>
               {this.state.nominations.map((movie, index) => (
