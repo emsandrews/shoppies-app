@@ -173,7 +173,7 @@ class Movie extends React.Component {
         <MediaQuery minWidth={769}>
           <Parallax
             onClick={() => this.props.onClick(movie)}
-            style={{ width: 200, height: 300 }}
+            style={{ cursor: "pointer", width: 200, height: 300 }}
           >
             {this.renderMovie(movie)}
           </Parallax>
