@@ -5,6 +5,7 @@
 ![sign-up](/ShoppiesBanner.png)
 
 **Description:**
+
 This app was created for the shopify frontend intern coding challenge. The app allows you to search the [**OMDB API**](http://www.omdbapi.com/) and nominate your top 5 movies for the illustrious "Shoppies" award.
 
 **Favourite Features:**
