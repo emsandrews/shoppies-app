@@ -13,20 +13,33 @@ const AppWrapper = styled.div`
   flex-direction: column;
   padding-left: 20px;
   min-height: 100vh;
+  @media (max-width: 768px) {
+    padding: 0px;
+  }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const RightPanel = styled.div`
   min-width: 480px;
-  max-width: 480px;
+  width: 480px;
   background: linear-gradient(273.33deg, #cfece1 16.8%, #7eb7a0 69.75%);
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    height: 300px;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+  }
 `;
 
 const NomWrapper = styled.div`
@@ -45,8 +58,8 @@ const NomTitleDiv = styled.div`
 `;
 
 const NomTitle = styled.div`
-  color: #636669;
-  font-size: 16px;
+  color: #fff;
+  font-size: 30px;
   padding: 15px;
 `;
 
@@ -215,7 +228,7 @@ class App extends React.Component {
           <RightPanel>
             <NomTitleDiv>
               <NomTitle>
-                Nominations
+                Nominations&nbsp;&nbsp;
                 <Emoji symbol="🏆" label="trophy"></Emoji>
               </NomTitle>
               {this.state.nominations.length === 5 ? (
