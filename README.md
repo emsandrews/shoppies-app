@@ -21,5 +21,5 @@ This app was created for the shopify frontend intern coding challenge. The app a
 - I learned how to deploy a website using netlify. 
 - I learned how to work with an API and best practices for storing my API Key when uploading to a public repository. 
 
-## Try it out [**here**](https://emily-shoppies.netlify.app/)!
+# Try out the Shoppies App [**here**](https://emily-shoppies.netlify.app/)!
 ___
