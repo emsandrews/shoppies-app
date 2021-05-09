@@ -18,7 +18,7 @@ This app was created for the shopify frontend intern coding challenge. The app a
 - The parallax effect did not work right away. I had to do a little bit of tweaking (remove some of the layering effect), and design changes (add onClick to the div) to get it to work properly. 
 
 **What I Learned:**
-- I learned how to use medai queries in React components to implement the responsivemovie cards.
+- I learned how to use media queries in React components to implement the responsive movie cards.
 - I learned how to deploy a website using netlify. 
 - I learned how to work with an API and best practices for storing my API Key when uploading to a public repository. 
 
