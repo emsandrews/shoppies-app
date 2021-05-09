@@ -23,7 +23,7 @@ const LeftPane = styled.div`
 const RightPane = styled.div`
   width: 50%;
   height: 100%;
-  //background-color: rgba(227, 248, 247, 0.42);
+  background-color: rgba(227, 248, 247, 0.42);
   display: flex;
   align-items: center;
   justify-content: center;

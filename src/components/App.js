@@ -6,7 +6,6 @@ import styled from "styled-components";
 import Emoji from "./Emoji.js";
 
 const MOVIE_API_URL = "https://www.omdbapi.com/";
-const MOVIE_API_KEY = "bd902656&";
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -133,7 +132,7 @@ class App extends React.Component {
         loading: true,
         errorMessage: null,
       });
-      const urlString = `${MOVIE_API_URL}?s=${searchValue}&apikey=${MOVIE_API_KEY}&`;
+      const urlString = `${MOVIE_API_URL}?s=${searchValue}&apikey=${process.env.REACT_APP_OMDB_API_KEY}&`;
       console.log(urlString);
       fetch(urlString)
         .then((response) => response.json())
@@ -176,12 +175,10 @@ class App extends React.Component {
 
   handleRemove(movie) {
     const nominations = this.state.nominations;
-    //var movies = this.state.movies.push(movie);
     var filteredNominations = nominations.filter(function (nom) {
       return nom.Title !== movie.Title;
     });
     this.setState({ nominations: filteredNominations });
-    //this.setState({ movies: movies });
   }
 
   movieIsNominated(movie) {
