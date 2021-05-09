@@ -10,7 +10,7 @@ This app was created for the shopify frontend intern coding challenge. The app a
 
 **Favourite Features:**
 - This app is fully responsive and works on mobile. 
-- Cards use a "parrallax" hover effect 
+- Cards use a "parrallax" hover effect adapted from [**Daniel Sinclair's Repo**](https://github.com/DanielSinclair/react-atv-parallax)
 - App was depoyed and hosted on Netlify 
 
 **How I Failed Forward:**
