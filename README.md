@@ -7,12 +7,14 @@
 **Description:**
 
 This app was created for the shopify frontend intern coding challenge. The app allows you to search the [**OMDB API**](http://www.omdbapi.com/) and nominate your top 5 movies for the illustrious "Shoppies" award.
+- App was depoyed and hosted on Netlify 
+- This app was built with React using [**Styled Components**](https://styled-components.com/)
 
 **Favourite Features:**
 - This app is fully responsive and works on mobile. 
 - Cards use a "parrallax" hover effect adapted from [**Daniel Sinclair's Repo**](https://github.com/DanielSinclair/react-atv-parallax)
-- App was depoyed and hosted on Netlify 
-- This app was built with React using [**Styled Components**](https://styled-components.com/)
+- The custom Shoppies logo designed by me!
+
 
 **How I Failed Forward:**
 - I initially had a lot of challenges getting the website to be fully responsive. The containers were resizing in all kinds of funny ways! I had to do a lot of googling, and experimenting until I finally figured it out! 
