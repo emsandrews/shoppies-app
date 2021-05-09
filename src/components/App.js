@@ -61,22 +61,6 @@ const NomBanner = styled.div`
   border-radius: 10px;
 `;
 
-// const NomBannerDiv = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: flex-start;
-//   align-items: center;
-//   height: 20px;
-//   padding-left: 25px;
-//   padding-top: 25px;
-// `;
-
-// const NomBannerTitle = styled.div`
-//   color: #636669;
-//   font-size: 16px;
-//   padding-right: 10px;
-// `;
-
 const LeftPanel = styled.div`
   display: flex;
   flex-direction: column;
@@ -119,32 +103,6 @@ const MovieTitle = styled.div`
   color: #636669;
   font-size: 16px;
   padding-right: 10px;
-`;
-
-const ErrorMessageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-left: 25px;
-  margin-top: 50px;
-`;
-
-const ErrorMessageDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 20px;
-  padding-left: 25px;
-`;
-
-const Message = styled.div`
-  color: #636669;
-  padding-right: 10px;
-  font-size: 15px;
-  font-weight: bold;
 `;
 
 class App extends React.Component {
