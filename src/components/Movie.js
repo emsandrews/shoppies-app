@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import Parallax from "./Parallax/Parallax";
+import MediaQuery from "react-responsive";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
+  padding: 20px;
   @media (max-width: 768px) {
     width: 100%;
   }
 `;
 
 const MovieWrapper = styled.div`
-  padding: 20px;
   @media (max-width: 768px) {
     padding: 5px 20px;
   }
@@ -129,37 +131,53 @@ const NominateButton = styled.button`
 const DEFAULT_PLACEHOLDER_IMAGE = "/images/PlaceHolderImage.png";
 
 class Movie extends React.Component {
+  constructor(props) {
+    super(props);
+    this.renderMovie = this.renderMovie.bind(this);
+  }
+
   truncate(str) {
     return str.length > 30 ? str.substring(0, 27) + "..." : str;
   }
 
-  render() {
-    const movie = this.props.movie;
+  renderMovie(movie) {
     const poster =
       movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
     return (
+      <MovieWrapper>
+        <MovieDiv>
+          <MovieInfo>
+            <MovieTitleWrapper>
+              <MovieTitle>{this.truncate(movie.Title)}</MovieTitle>
+              <MovieYear>{movie.Year}</MovieYear>
+            </MovieTitleWrapper>
+            <NominateButton
+              isNominated={this.props.isNominated}
+              onClick={() => this.props.onClick(movie)}
+              disabled={this.props.buttonDisabled}
+            >
+              {this.props.isNominated ? "Remove" : "Nominate"}
+            </NominateButton>
+          </MovieInfo>
+          <MoviePoster alt={`The movie titled: ${movie.Title}`} src={poster} />
+        </MovieDiv>
+      </MovieWrapper>
+    );
+  }
+
+  render() {
+    const movie = this.props.movie;
+    return (
       <Wrapper>
-        <MovieWrapper>
-          <MovieDiv>
-            <MovieInfo>
-              <MovieTitleWrapper>
-                <MovieTitle>{this.truncate(movie.Title)}</MovieTitle>
-                <MovieYear>{movie.Year}</MovieYear>
-              </MovieTitleWrapper>
-              <NominateButton
-                isNominated={this.props.isNominated}
-                onClick={() => this.props.onClick(movie)}
-                disabled={this.props.buttonDisabled}
-              >
-                {this.props.isNominated ? "Remove" : "Nominate"}
-              </NominateButton>
-            </MovieInfo>
-            <MoviePoster
-              alt={`The movie titled: ${movie.Title}`}
-              src={poster}
-            />
-          </MovieDiv>
-        </MovieWrapper>
+        <MediaQuery maxWidth={768}>{this.renderMovie(movie)}</MediaQuery>
+        <MediaQuery minWidth={769}>
+          <Parallax
+            onClick={() => this.props.onClick(movie)}
+            style={{ width: 200, height: 300 }}
+          >
+            {this.renderMovie(movie)}
+          </Parallax>
+        </MediaQuery>
       </Wrapper>
     );
   }
