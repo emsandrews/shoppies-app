@@ -46,6 +46,8 @@ const NomWrapper = styled.div`
   align-self: flex-start;
   flex-flow: row wrap;
   display: flex;
+  width: 100%;
+  padding: 20px 0px;
 `;
 
 const NomTitleDiv = styled.div`

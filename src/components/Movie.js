@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const MovieWrapper = styled.div`
   padding: 20px;
   @media (max-width: 768px) {
-    padding: 5px 10px;
+    padding: 5px 20px;
   }
 `;
 
@@ -28,6 +28,8 @@ const MovieDiv = styled.div`
     flex-direction: row-reverse;
     align-items: center;
     flex-grow: 1;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 10%);
+    background-color: white;
   }
 `;
 
@@ -41,6 +43,7 @@ const MovieTitle = styled.div`
   @media (max-width: 768px) {
     padding: 0px;
     font-size: 16px;
+    color: #222;
   }
 `;
 
@@ -78,6 +81,7 @@ const MovieYear = styled.div`
   @media (max-width: 768px) {
     padding: 0px;
     font-size: 13px;
+    color: #666;
   }
 `;
 
@@ -89,6 +93,7 @@ const MoviePoster = styled.img`
   @media (max-width: 768px) {
     opacity: 1;
     width: 50px;
+    min-width: 50px;
     height: 60px;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
@@ -114,6 +119,7 @@ const NominateButton = styled.button`
   @media (max-width: 768px) {
     flex-shrink: 1;
     width: 100px;
+    min-width: 100px;
     height: 60px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 0px;
