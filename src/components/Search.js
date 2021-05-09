@@ -26,6 +26,7 @@ const SearchField = styled.input`
   left: 50px;
   top: 407px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  -webkit-appearance: none;
   border-radius: 5px;
   outline: none;
   border: none;
