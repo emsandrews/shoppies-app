@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const AppHeader = styled.div`
   height: 70px;
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;

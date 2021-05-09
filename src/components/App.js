@@ -59,7 +59,7 @@ const NomTitleDiv = styled.div`
 
 const NomTitle = styled.div`
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   padding: 15px;
 `;
 

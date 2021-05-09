@@ -3,28 +3,32 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   box-sizing: border-box;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const MovieWrapper = styled.div`
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
+  @media (max-width: 768px) {
+    padding: 5px 10px;
+  }
 `;
 
 const MovieDiv = styled.div`
-  // max-width: 25%;
-  // @media screen and (min-width: 694px) and (max-width: 915px) {
-  //   max-width: 33%;
-  // }
-  // @media screen and (min-width: 652px) and (max-width: 693px) {
-  //   max-width: 50%;
-  // }
-  //  @media screen and (min-width: 651px) {
-  //   max-width: 100%;
-  //   margin: auto;
-  // }
   background-color: black;
   border-radius: 10px;
   width: 200px;
   height: 300px;
+  @media (max-width: 768px) {
+    height: 60px;
+    min-width: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    flex-grow: 1;
+  }
 `;
 
 const MovieTitle = styled.div`
@@ -34,6 +38,17 @@ const MovieTitle = styled.div`
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
+  @media (max-width: 768px) {
+    padding: 0px;
+    font-size: 16px;
+  }
+`;
+
+const MovieTitleWrapper = styled.div`
+  @media (max-width: 768px) {
+    text-align: left;
+    flex-grow: 1;
+  }
 `;
 
 const MovieInfo = styled.div`
@@ -46,13 +61,24 @@ const MovieInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  //padding: 10px;
+  @media (max-width: 768px) {
+    padding: 0px 0px 0px 20px;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    position: relative;
+    flex-grow: 1;
+  }
 `;
 
 const MovieYear = styled.div`
   font-size: 20x;
   color: white;
   padding-bottom: 20px;
+  @media (max-width: 768px) {
+    padding: 0px;
+    font-size: 13px;
+  }
 `;
 
 const MoviePoster = styled.img`
@@ -60,6 +86,13 @@ const MoviePoster = styled.img`
   width: 200px;
   height: 300px;
   opacity: 0.4;
+  @media (max-width: 768px) {
+    opacity: 1;
+    width: 50px;
+    height: 60px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+  }
 `;
 
 const NominateButton = styled.button`
@@ -78,11 +111,22 @@ const NominateButton = styled.button`
   &:disabled {
     background: #adccbf;
   }
+  @media (max-width: 768px) {
+    flex-shrink: 1;
+    width: 100px;
+    height: 60px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+  }
 `;
 
 const DEFAULT_PLACEHOLDER_IMAGE = "/images/PlaceHolderImage.png";
 
 class Movie extends React.Component {
+  truncate(str) {
+    return str.length > 30 ? str.substring(0, 27) + "..." : str;
+  }
+
   render() {
     const movie = this.props.movie;
     const poster =
@@ -92,8 +136,10 @@ class Movie extends React.Component {
         <MovieWrapper>
           <MovieDiv>
             <MovieInfo>
-              <MovieTitle>{movie.Title}</MovieTitle>
-              <MovieYear>{movie.Year}</MovieYear>
+              <MovieTitleWrapper>
+                <MovieTitle>{this.truncate(movie.Title)}</MovieTitle>
+                <MovieYear>{movie.Year}</MovieYear>
+              </MovieTitleWrapper>
               <NominateButton
                 isNominated={this.props.isNominated}
                 onClick={() => this.props.onClick(movie)}
