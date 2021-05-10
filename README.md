@@ -2,6 +2,9 @@
 # Shopify Frontend Intern Coding Challenge
 #### By Emily Andrews
 
+## Watch a virtual tour of the app [**here**](https://www.loom.com/share/7eed910369684767b0079675bad4a9ad) 
+
+
 ![sign-up](/ShoppiesBanner.png)
 
 **Description:**
