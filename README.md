@@ -3,6 +3,7 @@
 #### By Emily Andrews
 
 ## Watch a virtual tour of the app [**here**](https://www.loom.com/share/7eed910369684767b0079675bad4a9ad) 
+## Try out the Shoppies App [**here**](https://emily-shoppies.netlify.app/)!
 
 
 ![sign-up](/ShoppiesBanner.png)
@@ -27,6 +28,4 @@ This app was created for the shopify frontend intern coding challenge. The app a
 - I learned how to use media queries in React components to implement the responsive movie cards.
 - I learned how to deploy a website using netlify. 
 - I learned how to work with an API and best practices for storing my API Key when uploading to a public repository. 
-
-# Try out the Shoppies App [**here**](https://emily-shoppies.netlify.app/)!
 ___
