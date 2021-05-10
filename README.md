@@ -2,11 +2,10 @@
 # Shopify Frontend Intern Coding Challenge
 #### By Emily Andrews
 
+![sign-up](/ShoppiesBanner.png)
+
 ## Watch a virtual tour of the app [**here**](https://www.loom.com/share/7eed910369684767b0079675bad4a9ad) 
 ## Try out the Shoppies App [**here**](https://emily-shoppies.netlify.app/)!
-
-
-![sign-up](/ShoppiesBanner.png)
 
 **Description:**
 
